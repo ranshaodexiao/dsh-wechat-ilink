@@ -1,0 +1,27 @@
+# Build output (produced by `npm run build`)
+lib/
+
+# Dependencies
+node_modules/
+
+# Local logs and scratch files
+*.log
+*.tmp
+tmp/
+scratch/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Never commit credentials or session state:
+# the plugin stores the WeChat account token under %DSH_HOME%\clawbot\,
+# which lives outside the repo — but guard against a stray copy.
+accounts.json
+accounts/
+*.token
+.env
+.env.*

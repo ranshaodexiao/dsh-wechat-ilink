@@ -1,0 +1,39 @@
+# NOTICE
+
+## Third-party protocol reference
+
+The WeChat iLink Bot API wire protocol implemented in `src/ilink/` was written
+against the publicly documented behavior of Tencent's official WeChat channel
+plugin:
+
+- **Package:** `@tencent-weixin/openclaw-weixin`
+- **Copyright:** © Tencent
+- **License:** MIT
+- **Reference version:** 2.4.9
+
+The implementation here is an independent TypeScript implementation targeting
+DeepSeek Harness 0.2.0-rc.2. No source code from that package is vendored or
+copied; the protocol layer was written from its documented request/response
+contracts (endpoints, headers, message shapes, error codes, and CDN
+encryption rules).
+
+Documented protocol facts used:
+
+- Endpoints: `ilink/bot/get_bot_qrcode`, `get_qrcode_status`, `getupdates`,
+  `sendmessage`, `getconfig`, `sendtyping`, `getuploadurl`
+- Base URL `https://ilinkai.weixin.qq.com`, CDN `https://novac2c.cdn.weixin.qq.com/c2c`
+- Headers: `iLink-App-Id`, `iLink-App-ClientVersion`, `AuthorizationType`,
+  `Authorization`, `X-WECHAT-UIN`, optional `SKRouteTag`
+- `X-WECHAT-UIN` = base64(decimal string of a random uint32)
+- Error code `-14` = session expired (requires QR re-login)
+- Media encryption: AES-128-ECB with PKCS7; `aes_key` appears in two encodings
+  (base64 of raw 16 bytes, and base64 of the 32-char hex string)
+
+## Dependencies
+
+- `qrcode-terminal` — MIT — renders the login QR code in a terminal.
+
+## Node.js
+
+This package targets Node.js ≥ 22.13.0 and uses only built-in modules plus the
+dependency above.

@@ -1,0 +1,19 @@
+# Normalise every text file to LF in the repository and in every checkout, so
+# a Windows working copy and a Linux CI run never disagree about line endings.
+* text=auto eol=lf
+
+# Windows command scripts must keep CRLF to run under cmd.exe.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets must never be line-ending mangled.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.gz binary
+*.zst binary
+*.exe binary
+*.dll binary

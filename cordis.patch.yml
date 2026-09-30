@@ -1,0 +1,53 @@
+# dsh-wechat-clawbot-rc2 bundle layer for DeepSeek Harness 0.2.0-rc.2.
+#
+# A profile composes its entry list from: each bundle patch in
+# `dsh.profile.bundles` order over an EMPTY root, then the profile's own
+# cordis.patch.yml, then $DSH_HOME/cordis.patch.yml, then --patch overlays.
+#
+# `insert` WITHOUT an `id` appends rows to the root entry list.
+# `name` is a module specifier resolved from the profile dir. This file is
+# consumed from inside the package, so the bare package name resolves via the
+# profile's node_modules.
+- insert:
+    - id: wechat-clawbot
+      name: 'dsh-wechat-clawbot-rc2'
+      config:
+        # Master switch. Set false to load the bundle without connecting.
+        enabled: true
+        # The DSH session this WeChat conversation is bound to. Reused across
+        # restarts so the thread keeps its context.
+        sessionId: 'wechat-clawbot'
+        # Working directory for the bound session. Leave empty to inherit the
+        # workspace default (which is what you normally want).
+        # cwd: 'C:\\path\\to\\your\\workspace'
+        # Pin the model for WeChat turns. Leave empty to follow DSH's default.
+        # provider: deepseek-account
+        # model: deepseek-flash
+        # reasoningEffort: off
+        # Extra WeChat user ids allowed to drive the agent. When empty, only the
+        # account that scanned the QR code may talk to the bot.
+        allowedUserIds: []
+        # Show "typing…" in WeChat while a turn runs.
+        typing: true
+        typingKeepaliveMs: 5000
+        # Outbound message chunk size (characters).
+        maxMessageChars: 2000
+        # Hand inbound images to the model as image blocks.
+        acceptImages: true
+        # Abort a turn that runs longer than this.
+        turnTimeoutMs: 300000
+        # Startup self-test: run ONE synthetic turn through the DSH agent path
+        # and log the outcome, so the bridge is verified without needing an
+        # inbound WeChat message. It uses a separate "<sessionId>-selftest"
+        # session, so the real conversation is untouched.
+        #
+        # Kept ON deliberately: DSH moves fast, and this is the earliest possible
+        # signal that an upgrade broke the plugin (it exercises the real
+        # provider/model/cwd prompt assembly, which is where breakage shows up).
+        # Costs one model call per DSH start; set false if you would rather not
+        # pay that, and check the log after your first message instead.
+        selfTestOnStart: true
+        selfTestDelayMs: 5000
+        # 'silent' | 'error' | 'info' | 'debug'
+        # 'debug' is worth using while diagnosing: it logs the inbound text.
+        logLevel: info
