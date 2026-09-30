@@ -17,6 +17,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.6.5]
 
+**Published to npm:** https://www.npmjs.com/package/dsh-wechat-ilink
+
+Installing is one command, with no manual configuration and no build step on the
+user's machine:
+
+```powershell
+dsh plugin --profile desktop add dsh-wechat-ilink
+```
+
+Verified end to end against the real registry: the command downloads the
+tarball (which already contains the compiled `lib/`), installs it, and writes
+`dsh-wechat-ilink` into `dsh.profile.bundles` by itself. Because the tarball is
+pre-built, users never hit pnpm's `allowBuilds` block — that only affects
+installing from a git checkout.
+
 ### Changed
 
 - **Renamed the package to `dsh-wechat-ilink`** (was `dsh-wechat-clawbot-rc2`).

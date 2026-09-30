@@ -2,7 +2,17 @@
 
 在**微信**里直接跟 **DeepSeek Harness (DSH)** 对话。
 
+[![npm](https://img.shields.io/npm/v/dsh-wechat-ilink?label=npm)](https://www.npmjs.com/package/dsh-wechat-ilink)
+
+**一条命令装好，不用改任何配置文件：**
+
+```powershell
+dsh plugin --profile desktop add dsh-wechat-ilink
+```
+
 个人微信里会出现一个叫 **「微信ClawBot」** 的会话。你在里面发消息 → DSH 的**一个固定会话**处理 → 把最终回复发回微信。
+
+还能**用微信远程接管 DSH 里正在干活的另一个会话**（见 `/use`）。
 
 - 不依赖企业微信、公众号、小程序
 - 不需要公网服务器 / 内网穿透 / 域名

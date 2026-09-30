@@ -2,9 +2,20 @@
 
 Talk to **DeepSeek Harness (DSH)** directly from **WeChat**.
 
+[![npm](https://img.shields.io/npm/v/dsh-wechat-ilink?label=npm)](https://www.npmjs.com/package/dsh-wechat-ilink)
+
+**One command, no configuration file to edit:**
+
+```powershell
+dsh plugin --profile desktop add dsh-wechat-ilink
+```
+
 A contact named **「微信ClawBot」** appears in your personal WeChat. Send it a
 message, and a **single dedicated DSH session** handles it and sends the final
 reply back to WeChat.
+
+You can also **steer another DSH session you are working in**, from WeChat (see
+`/use`).
 
 - No WeCom (企业微信), no Official Account, no Mini Program
 - No public server, domain, or tunnel
