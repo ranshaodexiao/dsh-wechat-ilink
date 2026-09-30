@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **dsh-wechat-clawbot-rc2** are recorded here.
+All notable changes to **dsh-wechat-ilink** are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -15,6 +15,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > documentation this project has: every one of them was an assumed DSH contract
 > that turned out to be wrong.
 
+## [0.6.5]
+
+### Changed
+
+- **Renamed the package to `dsh-wechat-ilink`** (was `dsh-wechat-clawbot-rc2`).
+  npm already carries an unrelated, actively maintained `dsh-wechat-clawbot`
+  (0.3.1), and a name differing only by a `-rc2` suffix invited users to mistake
+  one for a fork of the other. `dsh-wechat-ilink` names the actual transport
+  (Tencent's iLink Bot API) and collides with nothing.
+
+  The repository moved with it:
+  **https://github.com/ranshaodexiao/dsh-wechat-ilink** (GitHub redirects the old
+  URL).
+
+  Deliberately **not** renamed, because each is a stable runtime identity rather
+  than a package name — changing any of them would orphan existing state:
+
+  | Identity | Value |
+  | --- | --- |
+  | Cordis plugin `name` (the log tag) | `wechat-clawbot` |
+  | Bundle row `id` | `wechat-clawbot` |
+  | `sessionId` — the user's conversation | `wechat-clawbot` |
+  | State directory — holds the WeChat token | `<DSH_HOME>/clawbot/` |
+  | CLI binary | `dsh-wechat-ilink` (follows the package) |
+
+  So an existing install keeps its bound account, its session history and its
+  log path; only the install command changes.
+
 ## [0.6.4]
 
 First public release.
@@ -23,7 +51,7 @@ First public release.
 
 - `src/cli.ts` now carries a `#!/usr/bin/env node` shebang, which survives
   compilation. Without it the declared `bin` entry could not be executed on
-  Linux/macOS, so `dsh-wechat-clawbot login` (or `npx`) would fail there.
+  Linux/macOS, so `dsh-wechat-ilink login` (or `npx`) would fail there.
 
 ### Added
 

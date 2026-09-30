@@ -1,4 +1,4 @@
-# dsh-wechat-clawbot-rc2 bundle layer for DeepSeek Harness 0.2.0-rc.2.
+# dsh-wechat-ilink bundle layer for DeepSeek Harness 0.2.0-rc.2.
 #
 # A profile composes its entry list from: each bundle patch in
 # `dsh.profile.bundles` order over an EMPTY root, then the profile's own
@@ -10,7 +10,7 @@
 # profile's node_modules.
 - insert:
     - id: wechat-clawbot
-      name: 'dsh-wechat-clawbot-rc2'
+      name: 'dsh-wechat-ilink'
       config:
         # Master switch. Set false to load the bundle without connecting.
         enabled: true

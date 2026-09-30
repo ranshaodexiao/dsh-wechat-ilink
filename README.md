@@ -1,4 +1,4 @@
-# dsh-wechat-clawbot
+# dsh-wechat-ilink
 
 在**微信**里直接跟 **DeepSeek Harness (DSH)** 对话。
 
@@ -119,7 +119,7 @@ DSH 会话「wechat-clawbot」（固定一个）
 ### 用户：一条命令
 
 ```powershell
-dsh plugin --profile desktop add dsh-wechat-clawbot-rc2
+dsh plugin --profile desktop add dsh-wechat-ilink
 ```
 
 不用手工编辑任何配置文件，装完**重启 DSH**。
@@ -130,7 +130,7 @@ dsh plugin --profile desktop add dsh-wechat-clawbot-rc2
 2. **自动把包名写进 `dsh.profile.bundles`** —— 官方 CLI 的行为（`activateNewBundles`，默认开启），所以不需要你手工编辑 `package.json`；
 3. 检查版本兼容性。
 
-> 已实测确认：装完后 `dsh.profile.bundles` 自动多出 `dsh-wechat-clawbot-rc2`，
+> 已实测确认：装完后 `dsh.profile.bundles` 自动多出 `dsh-wechat-ilink`，
 > 且 `dsh --profile desktop --dump-config` 的合成树里能看到插件的条目。
 >
 > **前置条件**：Desktop 的 profile 必须先初始化过 —— 打开一次 DeepSeek Harness
@@ -139,8 +139,8 @@ dsh plugin --profile desktop add dsh-wechat-clawbot-rc2
 ### 开发者：从源码
 
 ```powershell
-git clone <仓库地址> dsh-wechat-clawbot
-cd dsh-wechat-clawbot
+git clone <仓库地址> dsh-wechat-ilink
+cd dsh-wechat-ilink
 npm install        # prepare 会自动编译出 lib/
 npm test           # 138 个离线测试
 
@@ -160,7 +160,7 @@ dsh plugin --profile desktop add "link:$PWD"
 **这一步是必须的**：插件需要一个 `bot_token` 才能收发微信消息。
 
 ```powershell
-dsh-wechat-clawbot login
+dsh-wechat-ilink login
 ```
 
 如果你是从源码跑的、或者没装 bin 快捷方式，用等价的长命令：
@@ -200,9 +200,9 @@ node lib/cli.js login
 其他命令：
 
 ```powershell
-dsh-wechat-clawbot status   # 查看绑定状态
-dsh-wechat-clawbot logs     # 查看运行日志
-dsh-wechat-clawbot logout   # 解绑
+dsh-wechat-ilink status   # 查看绑定状态
+dsh-wechat-ilink logs     # 查看运行日志
+dsh-wechat-ilink logout   # 解绑
 ```
 
 ---
@@ -328,7 +328,7 @@ wechat-clawbot
 
 ```yaml
 - id: wechat-clawbot
-  name: 'dsh-wechat-clawbot-rc2'
+  name: 'dsh-wechat-ilink'
   config:
     enabled: true
 ```
@@ -354,7 +354,7 @@ wechat-clawbot
 
 ```yaml
 - id: wechat-clawbot
-  name: 'dsh-wechat-clawbot-rc2'
+  name: 'dsh-wechat-ilink'
   config:
     enabled: true
     sessionId: 'wechat-clawbot'
@@ -402,7 +402,7 @@ wechat-clawbot
 微信侧登录态失效了。重新扫码：
 
 ```powershell
-dsh-wechat-clawbot login      # 或：node lib/cli.js login
+dsh-wechat-ilink login      # 或：node lib/cli.js login
 ```
 
 插件检测到 `-14` 会自动暂停轮询并清空游标，重新绑定后自动恢复。
@@ -627,7 +627,7 @@ if (phase.step === 0 && decision.messages.length === 0) {
 ### 想确认绑定是否还在
 
 ```powershell
-dsh-wechat-clawbot status
+dsh-wechat-ilink status
 ```
 
 ### 看运行日志（排查问题的第一站）
@@ -636,7 +636,7 @@ dsh-wechat-clawbot status
 它的 stderr 在外面看不到，没有日志就只能靠猜：
 
 ```powershell
-dsh-wechat-clawbot logs 200
+dsh-wechat-ilink logs 200
 ```
 
 日志文件：`%DSH_HOME%\clawbot\channel.log`（默认 `%USERPROFILE%\.dsh\clawbot\channel.log`）。
@@ -687,10 +687,10 @@ selfTestOnStart: false
 
 ```powershell
 cd $env:DSH_PROFILE_DIR
-pnpm remove dsh-wechat-clawbot-rc2
+pnpm remove dsh-wechat-ilink
 ```
 
-再从 `package.json` 的 `dsh.profile.bundles` 里删掉 `dsh-wechat-clawbot-rc2`。
+再从 `package.json` 的 `dsh.profile.bundles` 里删掉 `dsh-wechat-ilink`。
 
 ---
 

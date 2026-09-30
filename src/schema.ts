@@ -38,7 +38,7 @@ function fallbackSchema(): unknown {
   return {
     '~standard': {
       version: 1,
-      vendor: 'dsh-wechat-clawbot',
+      vendor: 'dsh-wechat-ilink',
       validate(input: unknown) {
         if (input !== undefined && input !== null && typeof input !== 'object') {
           return { issues: [{ message: 'config must be an object' }] }

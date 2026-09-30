@@ -1,4 +1,4 @@
-# dsh-wechat-clawbot
+# dsh-wechat-ilink
 
 Talk to **DeepSeek Harness (DSH)** directly from **WeChat**.
 
@@ -126,7 +126,7 @@ output, so installing straight from it hits the build problem described below.
 ### Users — one command
 
 ```powershell
-dsh plugin --profile desktop add dsh-wechat-clawbot-rc2
+dsh plugin --profile desktop add dsh-wechat-ilink
 ```
 
 No configuration file to edit by hand. Restart DSH when it finishes.
@@ -140,7 +140,7 @@ The command does three things:
 3. checks version compatibility.
 
 > Verified directly: after installing, `dsh.profile.bundles` gains
-> `dsh-wechat-clawbot-rc2`, and `dsh --profile desktop --dump-config` shows the
+> `dsh-wechat-ilink`, and `dsh --profile desktop --dump-config` shows the
 > plugin's row in the composed tree.
 >
 > **Prerequisite**: the Desktop profile must already be initialised — open
@@ -150,8 +150,8 @@ The command does three things:
 ### Developers — from source
 
 ```powershell
-git clone <repo-url> dsh-wechat-clawbot
-cd dsh-wechat-clawbot
+git clone <repo-url> dsh-wechat-ilink
+cd dsh-wechat-ilink
 npm install        # prepare builds lib/ automatically
 npm test           # 138 offline tests
 
@@ -172,7 +172,7 @@ dsh plugin --profile desktop add "link:$PWD"
 The plugin needs a `bot_token` before it can send or receive.
 
 ```powershell
-dsh-wechat-clawbot login
+dsh-wechat-ilink login
 ```
 
 If you are running from source, or the bin shim is not on PATH, the equivalent
@@ -211,9 +211,9 @@ with mode `0600`.
 Other commands:
 
 ```powershell
-dsh-wechat-clawbot status   # show binding state
-dsh-wechat-clawbot logs     # show the runtime log
-dsh-wechat-clawbot logout   # unbind
+dsh-wechat-ilink status   # show binding state
+dsh-wechat-ilink logs     # show the runtime log
+dsh-wechat-ilink logout   # unbind
 ```
 
 ---
@@ -344,7 +344,7 @@ Edit `$env:DSH_PROFILE_DIR\cordis.patch.yml` and find the `id: wechat-clawbot` e
 
 ```yaml
 - id: wechat-clawbot
-  name: 'dsh-wechat-clawbot-rc2'
+  name: 'dsh-wechat-ilink'
   config:
     enabled: true
 ```
@@ -371,7 +371,7 @@ Edit `$env:DSH_PROFILE_DIR\cordis.patch.yml` and find the `id: wechat-clawbot` e
 
 ```yaml
 - id: wechat-clawbot
-  name: 'dsh-wechat-clawbot-rc2'
+  name: 'dsh-wechat-ilink'
   config:
     enabled: true
     sessionId: 'wechat-clawbot'
@@ -421,7 +421,7 @@ image cannot be stored, the turn still runs with a visible note instead of faili
 The WeChat-side login lapsed. Re-scan:
 
 ```powershell
-dsh-wechat-clawbot login      # or: node lib/cli.js login
+dsh-wechat-ilink login      # or: node lib/cli.js login
 ```
 
 On `-14` the plugin pauses polling and clears its cursor automatically; it
@@ -559,7 +559,7 @@ merely because nothing threw, so `SELFTEST PASS ... replyChars=0` passed. An
 ### Check whether the binding is still valid
 
 ```powershell
-dsh-wechat-clawbot status
+dsh-wechat-ilink status
 ```
 
 ### Read the runtime log (start here when diagnosing)
@@ -569,7 +569,7 @@ DSH process where its stderr is not observable — without a log, a live failure
 can only be guessed at:
 
 ```powershell
-dsh-wechat-clawbot logs 200
+dsh-wechat-ilink logs 200
 ```
 
 Log file: `%DSH_HOME%\clawbot\channel.log` (default `%USERPROFILE%\.dsh\clawbot\channel.log`).
@@ -622,10 +622,10 @@ selfTestOnStart: false
 
 ```powershell
 cd $env:DSH_PROFILE_DIR
-pnpm remove dsh-wechat-clawbot-rc2
+pnpm remove dsh-wechat-ilink
 ```
 
-Then remove `dsh-wechat-clawbot-rc2` from `dsh.profile.bundles`.
+Then remove `dsh-wechat-ilink` from `dsh.profile.bundles`.
 
 ---
 

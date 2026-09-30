@@ -1,6 +1,6 @@
 {
-  "name": "dsh-wechat-clawbot-rc2",
-  "version": "0.6.4",
+  "name": "dsh-wechat-ilink",
+  "version": "0.6.5",
   "description": "WeChat ClawBot (Tencent iLink) channel for DeepSeek Harness 0.2.0-rc.2 — talk to DSH from WeChat.",
   "type": "module",
   "license": "MIT",
@@ -10,7 +10,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "dsh-wechat-clawbot": "lib/cli.js"
+    "dsh-wechat-ilink": "lib/cli.js"
   },
   "exports": {
     ".": {

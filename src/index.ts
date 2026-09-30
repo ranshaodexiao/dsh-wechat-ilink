@@ -39,7 +39,7 @@ export const name = 'wechat-clawbot'
  * Kept as a literal so the built bundle needs no JSON import at runtime; the
  * startup banner logs it, which is how a loaded build is identified.
  */
-export const PLUGIN_VERSION = '0.6.4'
+export const PLUGIN_VERSION = '0.6.5'
 
 /**
  * Services this plugin requires before it activates.

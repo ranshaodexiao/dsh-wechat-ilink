@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * `dsh-wechat-clawbot` CLI — first-run QR binding and diagnostics.
+ * `dsh-wechat-ilink` CLI — first-run QR binding and diagnostics.
  *
- *   dsh-wechat-clawbot login     scan a QR code to bind a WeChat account
- *   dsh-wechat-clawbot status    show binding state and cursor
- *   dsh-wechat-clawbot logs [n]  print the channel's durable log tail
- *   dsh-wechat-clawbot logout    unbind all accounts
+ *   dsh-wechat-ilink login     scan a QR code to bind a WeChat account
+ *   dsh-wechat-ilink status    show binding state and cursor
+ *   dsh-wechat-ilink logs [n]  print the channel's durable log tail
+ *   dsh-wechat-ilink logout    unbind all accounts
  *
  * Equivalent long form, if you prefer not to rely on the bin shim:
  *
